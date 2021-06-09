@@ -1,0 +1,13 @@
+package ex01_xml;
+
+public class Calculator {
+	
+	// field (property)
+	
+	// constructor
+	
+	public Calculator() {
+		
+	}
+
+}
