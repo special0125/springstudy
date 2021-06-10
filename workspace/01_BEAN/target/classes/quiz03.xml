@@ -25,7 +25,7 @@
 		<property name="home">
 			<map>
 				<entry key=" address" value="seoul" />
-				<entry key=" phone" value="02-555-5555" />
+				<entry key=" phone" value="010-555-5555" />
 			</map>
 		</property>      
 	</bean>

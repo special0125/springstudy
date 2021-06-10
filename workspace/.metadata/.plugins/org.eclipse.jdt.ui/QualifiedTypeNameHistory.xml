@@ -1,2 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="ex01_xml.Calculator"/>
+<fullyQualifiedTypeName name="ex01_xml.EngineerCalculator"/>
+<fullyQualifiedTypeName name="quiz01.Person"/>
+<fullyQualifiedTypeName name="quiz02.MultiplicationTable"/>
+<fullyQualifiedTypeName name="org.springframework.context.support.AbstractApplicationContext"/>
+<fullyQualifiedTypeName name="org.springframework.context.support.GenericXmlApplicationContext"/>
+<fullyQualifiedTypeName name="ex03_xml.ListBean"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="ex03_xml.SetBean"/>
+<fullyQualifiedTypeName name="ex03_xml.MapBean"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="quiz03.Exam"/>
+<fullyQualifiedTypeName name="quiz03.Student"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.Map.Entry"/>
+</qualifiedTypeNameHistroy>
