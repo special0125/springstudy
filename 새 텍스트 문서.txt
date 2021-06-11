@@ -1,0 +1,26 @@
+src -> webapp -> WEB-INF
+
+- spring
+  bean 저장
+
+- views
+  jsp 저장
+
+
+시험범위
+
+sql파일 제공
+계정만들기
+create user name identified by 1111
+grant dba name
+DB(CRUD)
+MyBatis(X)
+PreparedStateMent(O)
+
+JavaSrcipt
+Jquery
+
+Batch프로그램
+cronmaker
+
+github.com 프로젝트만 올리기
