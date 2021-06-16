@@ -48,6 +48,7 @@ public class MyController {
 	@RequestMapping(value="v03",
 					method=RequestMethod.POST,
 					produces="application/json; charset=utf-8")
+	@ResponseBody
 	public Person v03(@RequestBody Person person) {
 		
 		return person;
