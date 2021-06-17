@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 
 import com.koreait.board01.dao.BoardDAO;
 
-public class SelectBoardCommand implements BoardCommand {
+public class BoardViewCommand implements BoardCommand {
 
 	@Override
 	public void execute(Model model) {

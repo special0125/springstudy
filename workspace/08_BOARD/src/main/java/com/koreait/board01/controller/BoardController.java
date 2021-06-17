@@ -15,11 +15,11 @@ import com.koreait.board01.command.BoardCommand;
 import com.koreait.board01.command.BoardListCommand;
 import com.koreait.board01.command.DeleteBoardCommand;
 import com.koreait.board01.command.InsertBoardCommand;
-import com.koreait.board01.command.SelectBoardCommand;
+import com.koreait.board01.command.BoardViewCommand;
 import com.koreait.board01.command.UpdateBoardCommand;
 import com.koreait.board01.dto.Board;
 
-@Controller
+// @Controller
 public class BoardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
@@ -65,7 +65,7 @@ public class BoardController {
 	public String selectBoardByNo(@RequestParam("no") long no, Model model) {
 		logger.info("SelectBoardOne() 호출");
 		model.addAttribute("no", no);
-		command = new SelectBoardCommand();
+		command = new BoardViewCommand();
 		command.execute(model);
 		
 		return "board/view";
