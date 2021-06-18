@@ -1,6 +1,6 @@
 package com.koreait.board02.dao;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
@@ -26,7 +26,7 @@ public class BoardDAO {
 	// 1. list
 	public List<Board> selectBoardList() {
 		sql = "SELECT NO, WRITER, TITLE, CONTENT, POSTDATE FROM BOARD";
-		return template.query(sql, new BeanPropertyRowMapper<Board>(Board.class));  // 제네릭처리 <Board> = <> (Board생략가능)
+		return template.query(sql, new BeanPropertyRowMapper<>(Board.class));  // 제네릭처리 <Board> = <> (Board생략가능)
 	}
 	
 	// 2. view

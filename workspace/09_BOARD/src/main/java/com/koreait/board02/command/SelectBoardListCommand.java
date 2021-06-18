@@ -1,6 +1,6 @@
 package com.koreait.board02.command;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.ui.Model;
 
 import com.koreait.board02.dao.BoardDAO;
