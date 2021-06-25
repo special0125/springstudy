@@ -6,4 +6,6 @@
 <typeInfo handle="=12_BOARD/src\/main\/java&lt;com.koreait.board03.command{BoardCommand.java[BoardCommand" modifiers="513" timestamp="1624239747384"/>
 <typeInfo handle="=13_CONTACT/src\/main\/java&lt;com.koreait.contact03.command{ContactCommand.java[ContactCommand" modifiers="513" timestamp="1624339894066"/>
 <typeInfo handle="=14_FILE/src\/main\/java&lt;com.koreait.file.command{BoardCommand.java[BoardCommand" modifiers="513" timestamp="1624408015511"/>
+<typeInfo handle="=15_MEMBER/C:\/Program Files\/Java\/jre1.8.0_202\/lib\/rt.jar&lt;java.lang.reflect(Member.class[Member" modifiers="1537" timestamp="1616388181543"/>
+<typeInfo handle="=15_MEMBER/src\/main\/java&lt;com.koreait.member.command{MemberCommand.java[MemberCommand" modifiers="513" timestamp="1624511258054"/>
 </typeInfoHistroy>
