@@ -10,6 +10,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.koreait.member.command.EmailAuthCommand;
 import com.koreait.member.command.FindIdCommand;
+import com.koreait.member.command.FindPwCommand;
 import com.koreait.member.command.IdCheckCommand;
 import com.koreait.member.command.JoinCommand;
 import com.koreait.member.command.LeaveCommand;
@@ -91,6 +92,11 @@ public class BeanConfiguration {
 	@Bean
 	public FindIdCommand findIdCommand() {
 		return new FindIdCommand();
+	}
+	
+	@Bean
+	public FindPwCommand findPwCommand() {
+		return new FindPwCommand();
 	}
 	
 }
