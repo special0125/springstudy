@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
+import com.koreait.search.command.AutoCompleteCommand;
+import com.koreait.search.command.SearchQueryCommand;
+import com.koreait.search.command.SerachAllCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -18,7 +21,7 @@ public class BeanConfiguration {
 		HikariConfig hikariConfig = new HikariConfig();
 		hikariConfig.setDriverClassName("oracle.jdbc.OracleDriver");
 		hikariConfig.setJdbcUrl("jdbc:oracle:thin:@127.0.0.1:1521:xe");
-		hikariConfig.setUsername("HR");
+		hikariConfig.setUsername("hr");
 		hikariConfig.setPassword("1111");
 		return hikariConfig;
 	}
@@ -32,7 +35,7 @@ public class BeanConfiguration {
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
 		sqlSessionFactory.setDataSource(hikariDataSource());
-		sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:com/koreait/serch/dao/*.xml"));
+		sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:com/koreait/search/dao/*.xml"));
 		return sqlSessionFactory.getObject();
 	}
 	
@@ -41,5 +44,19 @@ public class BeanConfiguration {
 		return new SqlSessionTemplate(sqlSessionFactory());
 	}
 	
+	@Bean
+	public SerachAllCommand searchAllCommand() {
+		return new SerachAllCommand();
+	}
+	
+	@Bean
+	public AutoCompleteCommand autoCompleteCommand() {
+		return new AutoCompleteCommand();
+	}
+	
+	@Bean
+	public SearchQueryCommand searchQueryCommand() {
+		return new SearchQueryCommand();
+	}
 	
 }

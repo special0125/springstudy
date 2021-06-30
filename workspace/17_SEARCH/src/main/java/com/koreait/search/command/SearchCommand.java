@@ -7,4 +7,7 @@ public interface SearchCommand {
 
 	public void execute(SqlSession sqlSession, Model model);
 	
+	
+	
+	
 }
