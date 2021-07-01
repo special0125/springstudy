@@ -8,7 +8,7 @@ import com.koreait.search.dto.QueryDTO;
 
 public interface SearchDAO {
 
-	public  int getTotalRecord();
+	public int getTotalRecord();
 	
 	public List<Employees> searchAll(PageDTO pageDTO);
 	
