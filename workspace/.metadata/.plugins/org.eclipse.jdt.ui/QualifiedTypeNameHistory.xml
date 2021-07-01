@@ -22,7 +22,6 @@
 <fullyQualifiedTypeName name="com.koreait.search.command.SearchQueryCommand"/>
 <fullyQualifiedTypeName name="com.koreait.search.dto.QueryDTO"/>
 <fullyQualifiedTypeName name="com.koreait.search.dao.SearchDAO"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
 <fullyQualifiedTypeName name="com.koreait.integration.repository.BoardRepository"/>
@@ -30,7 +29,6 @@
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="com.koreait.integration.service.BoardService"/>
 <fullyQualifiedTypeName name="com.koreait.integration.service.BoardServiceImpl"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.koreait.integration.domain.Board"/>
@@ -49,7 +47,6 @@
 <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
 <fullyQualifiedTypeName name="org.json.JSONArray"/>
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
-<fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="org.quartz.Scheduler"/>
 <fullyQualifiedTypeName name="org.quartz.SchedulerFactory"/>
 <fullyQualifiedTypeName name="org.quartz.impl.StdSchedulerFactory"/>
@@ -60,4 +57,7 @@
 <fullyQualifiedTypeName name="org.quartz.TriggerBuilder"/>
 <fullyQualifiedTypeName name="org.quartz.CronScheduleBuilder"/>
 <fullyQualifiedTypeName name="org.quartz.SchedulerException"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
 </qualifiedTypeNameHistroy>
