@@ -55,6 +55,7 @@
 					$('#pw_result').text('비밀번호는 ~~~입니다.').css('color', 'red');
 					pwPass = false;
 				}
+				
 			});
 		}
 		// 비밀번호 입력 확인 함수

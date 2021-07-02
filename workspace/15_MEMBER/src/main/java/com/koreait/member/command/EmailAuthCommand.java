@@ -1,6 +1,6 @@
 package com.koreait.member.command;
 
-import java.util.HashMap;
+import java.util.HashMap; 
 import java.util.Map;
 
 import javax.mail.Message;
@@ -27,7 +27,7 @@ public class EmailAuthCommand {
 		
 		String email = request.getParameter("email");  // 인증번호를 받는 사람 이메일
 		String authCode = null;
-		// MumeMessage 클래스
+		// MimeMessage 클래스
 		// 이메일을 작성하는 클래스
 		MimeMessage message = mailSender.createMimeMessage();
 		try {

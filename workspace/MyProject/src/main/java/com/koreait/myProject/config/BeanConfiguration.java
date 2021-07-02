@@ -7,6 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
+import com.koreait.myProject.command.EmailAuthCommand;
+import com.koreait.myProject.command.IdCheckCommand;
+import com.koreait.myProject.command.JoinCommand;
+import com.koreait.myProject.command.LeaveCommand;
+import com.koreait.myProject.command.LoginCommand;
+import com.koreait.myProject.command.LogoutCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -40,6 +46,37 @@ public class BeanConfiguration {
 	public SqlSessionTemplate sqlSession() throws Exception {
 		return new SqlSessionTemplate(sqlSessionFactory());
 	}
+	
+	@Bean
+	public IdCheckCommand idCheckCommand() {
+		return new IdCheckCommand();
+	}
+	
+	@Bean
+	public EmailAuthCommand emailAuthCommand() {
+		return new EmailAuthCommand();
+	}
+	
+	@Bean
+	public JoinCommand joinCommand() {
+		return new JoinCommand();
+	}
+	
+	@Bean
+	public LoginCommand loginCommand() {
+		return new LoginCommand();
+	}
+	
+	@Bean 
+	public LogoutCommand logoutCommand() {
+		return new LogoutCommand();
+	}
+	
+	@Bean
+	public LeaveCommand leaveCommand() {
+		return new LeaveCommand();
+	}
+	
 	
 	
 	

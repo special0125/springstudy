@@ -5,7 +5,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.koreait.myProject.dao.UserDAO">
 
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(ID)
+		  FROM USERS
+		 WHERE ID = #{id}
+	</select>
+
+	<select id="login" resultType="com.koreait.myProject.dto.User">
+		SELECT NO, 
+			   ID, 
+			   PW,
+			   NAME,
+			   PHONE, 
+			   EMAIL, 
+			   ADDRESS, 
+			   POSTDATE, 
+			   STATUS
+		  FROM USERS
+		 WHERE ID = #{id} 
+		   AND PW = #{pw}
+		   AND STATUS = 'on'
+	</select>
 	
-	
+	<update id="leave">
+		UPDATE USERS
+		   SET STATUS = 'OFF'
+		 WHERE ID = #{id}
+	</update>	
+
+	<insert id="join">
+		INSERT INTO USERS 
+		VALUES (USERS_SEQ.NEXTVAL, 
+		        #{id}, #{pw}, #{name}, #{phone}, #{email}, #{address},
+		        SYSDATE, 'on')
+	</insert>
 
 </mapper>

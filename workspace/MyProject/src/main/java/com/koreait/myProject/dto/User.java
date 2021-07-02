@@ -4,58 +4,56 @@ import java.sql.Date;
 
 public class User {
 
-	private long userNo;
-	private String userId;
-	private String userPw;
-	private String userName;
-	private String userPhon;
-	private String userEmail;
-	private String userAddress;
+	private long no;
+	private String id;
+	private String pw;
+	private String name;
+	private String phone;
+	private String email;
+	private String address;
 	private Date postdate;
 	private String status;
-	
-	
-	public long getUserNo() {
-		return userNo;
+	public long getNo() {
+		return no;
 	}
-	public void setUserNo(long userNo) {
-		this.userNo = userNo;
+	public void setNo(long no) {
+		this.no = no;
 	}
-	public String getUserId() {
-		return userId;
+	public String getId() {
+		return id;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getUserPw() {
-		return userPw;
+	public String getPw() {
+		return pw;
 	}
-	public void setUserPw(String userPw) {
-		this.userPw = userPw;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getUserPhon() {
-		return userPhon;
+	public String getPhone() {
+		return phone;
 	}
-	public void setUserPhon(String userPhon) {
-		this.userPhon = userPhon;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public String getUserEmail() {
-		return userEmail;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getUserAddress() {
-		return userAddress;
+	public String getAddress() {
+		return address;
 	}
-	public void setUserAddress(String userAddress) {
-		this.userAddress = userAddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public Date getPostdate() {
 		return postdate;
@@ -69,6 +67,8 @@ public class User {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	
 	
 	
 	
