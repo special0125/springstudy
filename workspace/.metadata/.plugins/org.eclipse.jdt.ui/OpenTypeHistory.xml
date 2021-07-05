@@ -9,8 +9,6 @@
 <typeInfo handle="=15_MEMBER/src\/main\/java&lt;com.koreait.member.command{MemberCommand.java[MemberCommand" modifiers="513" timestamp="1624511258054"/>
 <typeInfo handle="=16_AJAX/src\/main\/java&lt;com.koreait.ajax.command{MemberCommand.java[MemberCommand" modifiers="513" timestamp="1624851174365"/>
 <typeInfo handle="=17_SEARCH/src\/main\/java&lt;com.koreait.search.command{SearchCommand.java[SearchCommand" modifiers="513" timestamp="1625038368240"/>
-<typeInfo handle="=IntegrationProject/src\/main\/java&lt;com.koreait.integration.service{BoardService.java[BoardService" modifiers="513" timestamp="1625103284059"/>
-<typeInfo handle="=IntegrationProject/C:\/Users\/ITSC\/.m2\/repository\/org\/quartz-scheduler\/quartz\/2.3.0\/quartz-2.3.0.jar&lt;org.quartz(Job.class[Job" modifiers="1537" timestamp="1625098777369"/>
 <typeInfo handle="=15_MEMBER/C:\/Program Files\/Java\/jre1.8.0_202\/lib\/rt.jar&lt;java.lang.reflect(Member.class[Member" modifiers="1537" timestamp="1616388181543"/>
 <typeInfo handle="=MyProject/src\/main\/java&lt;com.koreait.myProject.command{UserCommand.java[UserCommand" modifiers="513" timestamp="1625128277896"/>
 </typeInfoHistroy>

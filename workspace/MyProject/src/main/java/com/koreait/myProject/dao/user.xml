@@ -19,17 +19,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			   PHONE, 
 			   EMAIL, 
 			   ADDRESS, 
-			   POSTDATE, 
+			   REGDATE, 
 			   STATUS
 		  FROM USERS
 		 WHERE ID = #{id} 
 		   AND PW = #{pw}
-		   AND STATUS = 'on'
 	</select>
 	
 	<update id="leave">
 		UPDATE USERS
-		   SET STATUS = 'OFF'
+		   SET STATUS = 'off'
 		 WHERE ID = #{id}
 	</update>	
 
@@ -39,5 +38,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		        #{id}, #{pw}, #{name}, #{phone}, #{email}, #{address},
 		        SYSDATE, 'on')
 	</insert>
+	
+	<select id="findId" resultType="com.koreait.myProject.dto.User">
+		SELECT ID, 
+			   EMAIL, 
+			   STATUS
+		  FROM USERS
+		 WHERE NAME = #{name}
+		   AND EMAIL = #{email}
+	</select>
+	
 
 </mapper>

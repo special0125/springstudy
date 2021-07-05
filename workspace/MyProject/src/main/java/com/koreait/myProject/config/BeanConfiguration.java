@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import com.koreait.myProject.command.EmailAuthCommand;
+import com.koreait.myProject.command.FindIdCommand;
 import com.koreait.myProject.command.IdCheckCommand;
 import com.koreait.myProject.command.JoinCommand;
 import com.koreait.myProject.command.LeaveCommand;
@@ -77,6 +78,10 @@ public class BeanConfiguration {
 		return new LeaveCommand();
 	}
 	
+	@Bean
+	public FindIdCommand findIdCommand() {
+		return new FindIdCommand();
+	}
 	
 	
 	

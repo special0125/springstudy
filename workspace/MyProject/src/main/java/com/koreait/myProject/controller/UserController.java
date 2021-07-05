@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.koreait.myProject.command.EmailAuthCommand;
+import com.koreait.myProject.command.FindIdCommand;
 import com.koreait.myProject.command.IdCheckCommand;
 import com.koreait.myProject.command.JoinCommand;
 import com.koreait.myProject.command.LeaveCommand;
@@ -30,6 +31,7 @@ public class UserController {
 	private EmailAuthCommand emailAuthCommand;
 	private JoinCommand joinCommand;
 	private LeaveCommand leaveCommand;
+	private FindIdCommand findIdCommand;
 	
 	@Autowired
 	public UserController(SqlSession sqlSession, 
@@ -38,7 +40,8 @@ public class UserController {
 						  LeaveCommand leaveCommand,
 						  IdCheckCommand idCheckCommand,
 						  EmailAuthCommand emailAuthCommand,
-						  JoinCommand joinCommand){
+						  JoinCommand joinCommand,
+						  FindIdCommand findIdCommand){
 		super();
 		this.sqlSession = sqlSession;
 		this.loginCommand = loginCommand;
@@ -47,11 +50,13 @@ public class UserController {
 		this.idCheckCommand = idCheckCommand;
 		this.emailAuthCommand = emailAuthCommand;
 		this.joinCommand = joinCommand;
+		this.findIdCommand = findIdCommand;
 	}
 
-	@GetMapping(value= {"/", "index"})
+	@GetMapping(value= {"/", "index.do"})
 	public String index() {
 		return "index";
+		
 	}
 	
 	@GetMapping(value="joinPage.do")
@@ -102,6 +107,30 @@ public class UserController {
 		model.addAttribute("session", session);
 		leaveCommand.execute(sqlSession, model);
 		return "redirect:/";
+	}
+	
+	@GetMapping(value="findIdPage.do")
+	public String findIdPage() {
+		return "user/findIdPage";
+	}
+	
+	@PostMapping(value="findId.do") 
+	public String findId(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		findIdCommand.execute(sqlSession, model);
+		return "user/findId";
+	}
+	
+	@GetMapping(value="findPwPage.do")
+	public String findPwPage() {
+		return "user/findPwPage";
+	}
+	
+	@GetMapping(value="findPw.do", produces="application/json; charset=utf-8")
+	@ResponseBody
+	public Map<String, String> findPw(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		return emailAuthCommand.execute(sqlSession, model);
 	}
 	
 }

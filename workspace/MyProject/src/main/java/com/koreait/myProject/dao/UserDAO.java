@@ -11,4 +11,6 @@ public interface UserDAO {
 	public User login(User user);
 	
 	public int leave(String id);
+	
+	public User findId(User user);
 }

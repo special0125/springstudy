@@ -11,7 +11,7 @@ public class User {
 	private String phone;
 	private String email;
 	private String address;
-	private Date postdate;
+	private Date regdate;
 	private String status;
 	public long getNo() {
 		return no;
@@ -55,11 +55,11 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getPostdate() {
-		return postdate;
+	public Date getRegdate() {
+		return regdate;
 	}
-	public void setPostdate(Date postdate) {
-		this.postdate = postdate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 	public String getStatus() {
 		return status;
