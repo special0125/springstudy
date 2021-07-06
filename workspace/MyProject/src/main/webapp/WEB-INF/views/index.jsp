@@ -73,5 +73,8 @@
 	</c:if>
 	<br><br>
 	
+	<a href="galleryBoard.do">갤러리 게시판</a><br>	
+	<a href="freeBoard.do">자유 게시판</a>
+	
 </body>
 </html>

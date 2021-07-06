@@ -7,13 +7,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-import com.koreait.myProject.command.EmailAuthCommand;
-import com.koreait.myProject.command.FindIdCommand;
-import com.koreait.myProject.command.IdCheckCommand;
-import com.koreait.myProject.command.JoinCommand;
-import com.koreait.myProject.command.LeaveCommand;
-import com.koreait.myProject.command.LoginCommand;
-import com.koreait.myProject.command.LogoutCommand;
+import com.koreait.myProject.Command.ChangePwCommand;
+import com.koreait.myProject.Command.EmailAuthCommand;
+import com.koreait.myProject.Command.FindIdCommand;
+import com.koreait.myProject.Command.FindPwCommand;
+import com.koreait.myProject.Command.IdCheckCommand;
+import com.koreait.myProject.Command.JoinCommand;
+import com.koreait.myProject.Command.LeaveCommand;
+import com.koreait.myProject.Command.LoginCommand;
+import com.koreait.myProject.Command.LogoutCommand;
+import com.koreait.myProject.galleryCommand.InsertBoardCommand;
+import com.koreait.myProject.galleryCommand.SelectAllCommand;
+import com.koreait.myProject.galleryCommand.SelectByNoCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -83,6 +88,29 @@ public class BeanConfiguration {
 		return new FindIdCommand();
 	}
 	
+	@Bean
+	public FindPwCommand findPwCommand() {
+		return new FindPwCommand();
+	}
 	
+	@Bean
+	public ChangePwCommand changePwCommand() {
+		return new ChangePwCommand();
+	}
+	
+	@Bean
+	public SelectAllCommand selectAllCommand() {
+		return new SelectAllCommand();
+	}
+	
+	@Bean
+	public SelectByNoCommand selectByNoCommand() {
+		return new SelectByNoCommand();
+	}
+	
+	@Bean
+	public InsertBoardCommand insertBoardCommand() {
+		return new InsertBoardCommand();
+	}
 	
 }

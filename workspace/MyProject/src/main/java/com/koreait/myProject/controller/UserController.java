@@ -7,19 +7,22 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.koreait.myProject.command.EmailAuthCommand;
-import com.koreait.myProject.command.FindIdCommand;
-import com.koreait.myProject.command.IdCheckCommand;
-import com.koreait.myProject.command.JoinCommand;
-import com.koreait.myProject.command.LeaveCommand;
-import com.koreait.myProject.command.LoginCommand;
-import com.koreait.myProject.command.LogoutCommand;
+import com.koreait.myProject.Command.ChangePwCommand;
+import com.koreait.myProject.Command.EmailAuthCommand;
+import com.koreait.myProject.Command.FindIdCommand;
+import com.koreait.myProject.Command.FindPwCommand;
+import com.koreait.myProject.Command.IdCheckCommand;
+import com.koreait.myProject.Command.JoinCommand;
+import com.koreait.myProject.Command.LeaveCommand;
+import com.koreait.myProject.Command.LoginCommand;
+import com.koreait.myProject.Command.LogoutCommand;
 
 @Controller
 public class UserController {
@@ -32,6 +35,8 @@ public class UserController {
 	private JoinCommand joinCommand;
 	private LeaveCommand leaveCommand;
 	private FindIdCommand findIdCommand;
+	private FindPwCommand findPwCommand;
+	private ChangePwCommand changePwCommand;
 	
 	@Autowired
 	public UserController(SqlSession sqlSession, 
@@ -41,7 +46,9 @@ public class UserController {
 						  IdCheckCommand idCheckCommand,
 						  EmailAuthCommand emailAuthCommand,
 						  JoinCommand joinCommand,
-						  FindIdCommand findIdCommand){
+						  FindIdCommand findIdCommand,
+						  FindPwCommand findPwCommand,
+						  ChangePwCommand changePwCommand){
 		super();
 		this.sqlSession = sqlSession;
 		this.loginCommand = loginCommand;
@@ -51,6 +58,8 @@ public class UserController {
 		this.emailAuthCommand = emailAuthCommand;
 		this.joinCommand = joinCommand;
 		this.findIdCommand = findIdCommand;
+		this.findPwCommand = findPwCommand;
+		this.changePwCommand = changePwCommand;
 	}
 
 	@GetMapping(value= {"/", "index.do"})
@@ -128,9 +137,25 @@ public class UserController {
 	
 	@GetMapping(value="findPw.do", produces="application/json; charset=utf-8")
 	@ResponseBody
-	public Map<String, String> findPw(HttpServletRequest request, Model model) {
+	public Map<String, Object> findPw(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		return emailAuthCommand.execute(sqlSession, model);
+		return findPwCommand.execute(sqlSession, model);
 	}
+	
+	@PostMapping(value="changePwPage.do")
+	public String changePwPage() {
+		return "user/changePw";
+	}
+	
+	@PostMapping(value="changePw.do")
+	public String changePw(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		changePwCommand.execute(sqlSession, model);
+		return "redirect:/";
+	}
+	
+	
+	
+	
 	
 }

@@ -14,33 +14,30 @@
 		function fn_findPw() {
 			if ($('#id').val() == '') {
 				$('#id_result').text('아이디를 입력하세요.').css('color', 'red');
-				$('#id').focus();
 				return false;
 			}else if ($('#email').val() == '') {
 				$('#email_result').text('이메일을 입력하세요.').css('color', 'red');
-				$('#email').focus();
 				return false;
 			}
-			else
 			
 		}
 		
 		function fn_verify_num(){
 			$('#verify_num_btn').click(function(){
-				if ($('#email').val() == '') {
-					$('#email_result').text('이메일을 입력하세요.').css('color', 'red');
-					$('#email').focus();
-					return false;
-				}
+				fn_findPw();
 				$.ajax({
 					url: 'findPw.do',
 					type: 'get',
 					data: 'id=' + $('#id').val() + '&email=' + $('#email').val(),
 					dataType: 'json',
 					success: function(resultMap) {
-						alert('인증코드가 발송되었습니다.');
-						$('#email_result').text('인증코드가 발송되었습니다.').css('color', 'blue');
-						fn_verify(resultMap.authCode);
+						if(resultMap.status == 200) {
+							alert('인증코드가 발송되었습니다.');
+							$('#email_result').text('인증코드가 발송되었습니다.').css('color', 'blue');
+							fn_verify(resultMap.authCode);
+						}else {
+							alert(resultMap.status);
+						}
 					}
 				})
 			});
@@ -48,7 +45,10 @@
 		function fn_verify(authCode) {
 			$('#verify_btn').click(function(){
 				if (authCode == $('#authCode').val()) {
-					$('#authCode_result').text('인증되었습니다.').css('color', 'blue');
+					alert('인증되었습니다! 비밀번호 변경 페이지로 이동합니다.');
+					$('#f').attr('action', 'changePwPage.do');
+					$('#f').attr('method', 'post');
+					$('#f').submit();
 				}else {
 					$('#authCode_result').text('인증이 실패했습니다.').css('color', 'red');
 				}
@@ -73,8 +73,7 @@
 		<input type="text" name="authCode" id="authCode">
 		<input type="button" value="인증하기" id="verify_btn"><br>
 		<span id="authCode_result"></span><br>
-		<input type="button" value="비밀번호 찾기" id="findPw_btn">
-		<input type="button" value="로그인하러 가기" onclick="location.href='index.do'">
+		<input type="button" value="홈으로가기" onclick="location.href='index.do'">
 	</form>
 </body>
 </html>

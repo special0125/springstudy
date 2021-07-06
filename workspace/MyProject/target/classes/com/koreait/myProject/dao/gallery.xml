@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.myProject.dao.GalleryBoardDAO">
+
+	<select id="selectAll" resultType="com.koreait.myProject.dto.GalleryBoard">
+		SELECT NO, 
+			   ID,
+			   TITLE,
+			   CONTENT,
+			   REGDATE,
+			   POSTDATE,
+			   IP,
+			   HIT,
+			   FILENAME
+		  FROM GALLERYBOARD
+	</select>
+	
+	<select id="selectByNo" resultType="com.koreait.myProject.dto.GalleryBoard">
+		SELECT NO, 
+			   ID,
+			   TITLE,
+			   CONTENT,
+			   REGDATE,
+			   POSTDATE,
+			   IP,
+			   HIT,
+			   FILENAME
+		  FROM GALLERYBOARD
+		 WHERE NO = #{no}
+	</select>
+	
+	<insert id="insertBoard">
+		INSERT INTO GALLERYBOARD
+		VALUSE (GALLERYBOARD_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, SYSDATE '127.0.0.1', 0, #{filename})
+	</insert>
+</mapper>

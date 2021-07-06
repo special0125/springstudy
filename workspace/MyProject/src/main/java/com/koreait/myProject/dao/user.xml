@@ -48,5 +48,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   AND EMAIL = #{email}
 	</select>
 	
+	<select id="findUser" resultType="com.koreait.myProject.dto.User">
+		SELECT ID,
+			   EMAIL,
+			   PW
+		  FROM USERS
+		 WHERE ID = #{id}
+		   AND EMAIL = #{email}
+	</select>
+	
+	<update id="changePw">
+		UPDATE USERS
+		   SET PW = #{pw}
+		 WHERE ID = #{id}
+	</update>
+	
 
 </mapper>
