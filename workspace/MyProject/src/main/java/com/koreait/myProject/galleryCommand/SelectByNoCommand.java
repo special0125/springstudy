@@ -1,5 +1,6 @@
 package com.koreait.myProject.galleryCommand;
 
+import java.net.URLDecoder;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,11 @@ public class SelectByNoCommand implements GalleryCommand {
 
 		if(galleryBoard != null) {
 			model.addAttribute("galleryBoard", galleryBoard);
+			try {
+				model.addAttribute("filename", URLDecoder.decode(galleryBoard.getFilename(), "utf-8"));
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	
 		

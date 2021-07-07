@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.koreait.myProject.Command.ChangePwCommand;
 import com.koreait.myProject.Command.EmailAuthCommand;
@@ -16,9 +17,12 @@ import com.koreait.myProject.Command.JoinCommand;
 import com.koreait.myProject.Command.LeaveCommand;
 import com.koreait.myProject.Command.LoginCommand;
 import com.koreait.myProject.Command.LogoutCommand;
+import com.koreait.myProject.ReplyCommand.ReplyListCommand;
+import com.koreait.myProject.galleryCommand.DeleteGalleryBoardCommand;
 import com.koreait.myProject.galleryCommand.InsertBoardCommand;
 import com.koreait.myProject.galleryCommand.SelectAllCommand;
 import com.koreait.myProject.galleryCommand.SelectByNoCommand;
+import com.koreait.myProject.galleryCommand.UpdateGalleryBoardCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -52,6 +56,16 @@ public class BeanConfiguration {
 	public SqlSessionTemplate sqlSession() throws Exception {
 		return new SqlSessionTemplate(sqlSessionFactory());
 	}
+	
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setDefaultEncoding("utf-8");
+		multipartResolver.setMaxUploadSize(1024 * 1024 * 10);  // 바이트 단위(10MB)
+		return multipartResolver;
+	}
+	
+	
 	
 	@Bean
 	public IdCheckCommand idCheckCommand() {
@@ -113,4 +127,18 @@ public class BeanConfiguration {
 		return new InsertBoardCommand();
 	}
 	
+	@Bean
+	public UpdateGalleryBoardCommand updateGalleryBoardCommand() {
+		return new UpdateGalleryBoardCommand();
+	}
+	
+	@Bean
+	public DeleteGalleryBoardCommand deleteGalleryBoardCommand() {
+		return new DeleteGalleryBoardCommand();
+	}
+	
+	@Bean
+	public ReplyListCommand replyListCommand() {
+		return new ReplyListCommand();
+	}
 }

@@ -10,12 +10,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.koreait.myProject.dto.Page;
+import com.koreait.myProject.galleryCommand.DeleteGalleryBoardCommand;
 import com.koreait.myProject.galleryCommand.InsertBoardCommand;
 import com.koreait.myProject.galleryCommand.SelectAllCommand;
 import com.koreait.myProject.galleryCommand.SelectByNoCommand;
+import com.koreait.myProject.galleryCommand.UpdateGalleryBoardCommand;
 
 @Controller
 public class BoardController {
@@ -24,18 +28,23 @@ public class BoardController {
 	private SelectAllCommand selectAllCommand;
 	private SelectByNoCommand selectByNoCommand;
 	private InsertBoardCommand insertBoardCommand;
-	
+	private  UpdateGalleryBoardCommand updateGalleryBoardCommand;
+	private DeleteGalleryBoardCommand deleteGalleryBoardCommand;
 	
 	@Autowired
 	public BoardController(SqlSession sqlSession, 
 						   SelectAllCommand selectAllCommand,
 						   SelectByNoCommand selectByNoCommand,
-						   InsertBoardCommand insertBoardCommand) {
+						   InsertBoardCommand insertBoardCommand,
+						   UpdateGalleryBoardCommand updateGalleryBoardCommand,
+						   DeleteGalleryBoardCommand deleteGalleryBoardCommand) {
 		super();
 		this.sqlSession = sqlSession;
 		this.selectAllCommand = selectAllCommand;
 		this.selectByNoCommand = selectByNoCommand;
 		this.insertBoardCommand = insertBoardCommand;
+		this.updateGalleryBoardCommand = updateGalleryBoardCommand;
+		this.deleteGalleryBoardCommand = deleteGalleryBoardCommand;
 	}
 
 
@@ -45,10 +54,12 @@ public class BoardController {
 		return "galleryBoard/galleryBoard"; 
 	}
 	
-	@GetMapping(value="selectAll.do", produces="application/json; charset=utf-8")
+	@PostMapping(value="selectAll.do", produces="application/json; charset=utf-8")
 	@ResponseBody
-	public Map<String, Object> selectAll() {
-		return selectAllCommand.execute(sqlSession);
+	public Map<String, Object> selectAll(@RequestBody Page page, Model model) {
+		model.addAttribute("page", page.getPage());
+		return selectAllCommand.execute(sqlSession, model);
+		
 	}
 	
 	@GetMapping(value="selectByNo.do")
@@ -64,10 +75,27 @@ public class BoardController {
 	}
 	
 	@PostMapping(value="insertBoard.do")
-	public String insertBoard(MultipartHttpServletRequest multipartRequest, Model model) {
+	public String insertBoard(MultipartHttpServletRequest multipartRequest,
+							  Model model) {
 		model.addAttribute("multipartRequest", multipartRequest);
 		insertBoardCommand.execute(sqlSession, model);
-		return "redirect:selectAll.do";
+		return "redirect:galleryBoard.do";
 	}
+	
+	@PostMapping(value="updateBoard.do")
+	public String updateBoard(MultipartHttpServletRequest multipartRequest, Model model) {
+		model.addAttribute("multipartRequest", multipartRequest);
+		updateGalleryBoardCommand.execute(sqlSession, model);
+		return "redirect:selectByNo.do?no=" + multipartRequest.getParameter("no");
+	}
+	
+	@PostMapping(value="deleteBoard.do")
+	public String deleteBoard(MultipartHttpServletRequest multipartRequest, Model model) {
+		model.addAttribute("multipartRequest", multipartRequest);
+		deleteGalleryBoardCommand.execute(sqlSession, model);
+		return "redirect:galleryBoard.do";
+	}
+	
+	
 	
 }

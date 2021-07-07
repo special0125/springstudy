@@ -6,17 +6,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.koreait.myProject.dao.GalleryBoardDAO">
 
 	<select id="selectAll" resultType="com.koreait.myProject.dto.GalleryBoard">
-		SELECT NO, 
-			   ID,
-			   TITLE,
-			   CONTENT,
-			   REGDATE,
-			   POSTDATE,
-			   IP,
-			   HIT,
-			   FILENAME
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		          FROM (SELECT NO,
+		                       ID,
+		                       TITLE,
+		                       CONTENT,
+		                       REGDATE,
+		                       POSTDATE,
+		                       IP,
+		                       HIT,
+		                       FILENAME
+		                  FROM GALLERYBOARD
+		                 ORDER BY NO DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}  
+	</select>
+	
+	<select id="getTotalMemberCount" resultType="int">
+		SELECT COUNT(NO)
 		  FROM GALLERYBOARD
 	</select>
+	
 	
 	<select id="selectByNo" resultType="com.koreait.myProject.dto.GalleryBoard">
 		SELECT NO, 
@@ -34,6 +44,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="insertBoard">
 		INSERT INTO GALLERYBOARD
-		VALUSE (GALLERYBOARD_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, SYSDATE '127.0.0.1', 0, #{filename})
+		VALUES (GALLERYBOARD_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, SYSDATE, SYSDATE, '127.0.0.1', 0, #{param4})
 	</insert>
+	
+	<update id="updateBoard">
+		UPDATE GALLERYBOARD
+		   SET TITLE = #{param1}, CONTENT = #{param2}, FILENAME = #{param3}
+		 WHERE NO = #{param4}
+	</update>
+	
+	<delete id="deleteBoard">
+		DELETE 
+		  FROM GALLERYBOARD
+		 WHERE NO = #{no}
+	</delete>
 </mapper>

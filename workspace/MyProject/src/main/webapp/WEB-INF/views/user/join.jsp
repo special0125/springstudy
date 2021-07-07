@@ -21,7 +21,7 @@
 			$('#id').keyup(function(){  // keyup : 아이디를 입력할때마다
 				var regID = /^[a-z0-9]{1,9}$/;  // 나중에 수정해서 사용
 				if (!regID.test($('#id').val())) {
-					$('#id_result').text('아이디는 ~~~입니다.').css('color', 'red');
+					$('#id_result').text('아이디는 (영문,숫자)1~9자리 입니다.').css('color', 'red');
 					return false;
 				}
 				$.ajax({
@@ -54,7 +54,7 @@
 					$('#pw_result').text('사용 가능한 비밀번호입니다.').css('color', 'blue');
 					pwPass = true;
 				} else {
-					$('#pw_result').text('비밀번호는 ~~~입니다.').css('color', 'red');
+					$('#pw_result').text('비밀번호는 1~4자리 숫자입니다.').css('color', 'red');
 					pwPass = false;
 				}
 				if ($('#pw').val() == '') {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.myProject.dao.ReplyDAO">
+
+	<select id="replyList" resultType="com.koreait.myProject.dto.Reply">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		          FROM (SELECT NO,
+		                       ID,
+		                       CONTENT,
+		                       IP,
+		                       REGDATE
+		                  FROM REPLY
+		                 ORDER BY NO DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}  
+	</select>
+	
+	<select id="getTotalReplyCount" resultType="int">
+		SELECT COUNT(NO)
+		  FROM REPLY
+	</select>
+	
+	
+</mapper>

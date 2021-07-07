@@ -46,7 +46,6 @@
 		상태: ${loginUser.status}
 		<a href="logout.do">로그아웃</a><br>
 		<a href="leave.do?id=${loginUser.id}" id="leave_link">회원탈퇴</a><br>
-		<a href="myPage.do">마이페이지</a><br>
 	</c:if>
 
 	<c:if test="${loginUser.status == 'off'}">

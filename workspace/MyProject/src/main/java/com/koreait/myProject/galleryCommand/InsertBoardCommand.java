@@ -1,6 +1,7 @@
 package com.koreait.myProject.galleryCommand;
 
 import java.io.File;
+import java.net.URLEncoder;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,6 +15,7 @@ public class InsertBoardCommand implements GalleryCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
+		
 		Map<String, Object> map = model.asMap();
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)map.get("multipartRequest");
 		
@@ -23,13 +25,13 @@ public class InsertBoardCommand implements GalleryCommand {
 		
 		MultipartFile file = multipartRequest.getFile("filename");
 		
+		
 		GalleryBoardDAO galleryBoardDAO = sqlSession.getMapper(GalleryBoardDAO.class);
 		
 		if (file != null && !file.isEmpty()) {
 			
 			// 올릴 파일명
 			String originalFilename = file.getOriginalFilename();
-			
 			// 서버에 저장할 파일명
 			// 파일명의 중복 방지 대책필요
 			// 파일명_올린시간.확장자
@@ -39,11 +41,10 @@ public class InsertBoardCommand implements GalleryCommand {
 			
 			// 첨부파일을 저장할 서버 위치
 			String realPath = multipartRequest.getServletContext().getRealPath("resources/archive");
-			
 			// 디렉터리 생성
 			File archive = new File(realPath);
 			if (!archive.exists()) {
-				archive.mkdir();
+				archive.mkdirs();
 			}
 			
 			// 서버에 첨부파일 저장
@@ -53,6 +54,12 @@ public class InsertBoardCommand implements GalleryCommand {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			// DB에 넣는 파일명을 인코딩 처리
+			try {
+				uploadFilename = URLEncoder.encode(uploadFilename, "utf-8");
+			} catch (Exception e) { }
+			
 			
 			// DB에 데이터 저장
 			galleryBoardDAO.insertBoard(id, title, content, uploadFilename);
